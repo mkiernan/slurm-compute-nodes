@@ -160,7 +160,7 @@
         "type": "string",
         "defaultValue": "avset-hpc-clients",
         "metadata": {
-             "description": "Compute nodes availability set name is important for grouping clients into deployments that can communicate with each other via RDMA"
+             "description": "Availability set name is REQUIRED when using MPI/Infiniband, so that nodes can communicate with each other via RDMA"
          }
     }
   },
@@ -636,7 +636,7 @@
       		"apiVersion": "[variables('armApiVersion')]",
                 "type": "Microsoft.Compute/availabilitySets",
                 "name": "[variables('clientAvailabilitySetSettings').name]",
-                "location": "[parameters('location')]",
+                "location": "[resourceGroup().location]",
                 "properties": {
                         "platformFaultDomainCount": "[variables('clientAvailabilitySetSettings').faultDomainCount]",
                         "platformUpdateDomainCount": "[variables('clientAvailabilitySetSettings').updateDomainCount]"
