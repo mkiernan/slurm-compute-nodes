@@ -161,14 +161,14 @@
       "metadata": {
         "description": "The size in GB of each data disk that is attached to the VM.  A RAID-0 volume is created with all data disks that is dataDiskSize * dataDiskCount in size."
       }
-    }
+    },
     "clientAvailabilitySetName": {
         "type": "string",
         "defaultValue": "avset-hpc-clients",
         "metadata": {
              "description": "Compute nodes availability set name is important for grouping clients into deployments that can communicate with each other via RDMA"
          }
-    },
+    }
   },
   "variables": {
 	"imageReference_SUSE:SLES-HPC:12SP1": {
