@@ -77,6 +77,7 @@
       ],
       "metadata": {
         "description": "Size of the head node."
+      }
     },
     "workerNodeSize": {
       "type": "string",
@@ -649,5 +650,4 @@
 	"type": "string"
       }
    }
-}
 }
