@@ -1,6 +1,6 @@
 # Azure SLES12-SP1/CentOS-HPC HPC ARM Compute Template
 
-Deploys a SLURM cluster with head node and n worker nodes.
+Deploys a SLURM cluster with head node and n worker nodes in the same availability set. 
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmkiernan%2Fslurm-compute-nodes%2Fmaster%2Fazuredeploy.json" target="_blank">
    <img alt="Deploy to Azure" src="http://azuredeploy.net/deploybutton.png"/>

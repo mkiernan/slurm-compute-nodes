@@ -11,7 +11,7 @@
 			"OpenLogic:CentOS-HPC:6.5",
 			"OpenLogic:CentOS:7.2",
 			"OpenLogic:CentOS:7.3",
-			"Canonical:UbuntuServer:16.04-LTS"
+			"Canonical:UbuntuServer:16.04-LTS",
 			"Canonical:UbuntuServer:16.10"
 	       	],
        		"metadata": {
