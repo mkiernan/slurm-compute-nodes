@@ -613,7 +613,7 @@
           "adminPassword": "[parameters('adminPassword')]"
         },
         "storageProfile": {
-          "imageReference": "[variables('imageReference')]"
+          "imageReference": "[variables('imageReference')]",
           "osDisk": {
             "name": "osdisk",
             "vhd": {
@@ -641,7 +641,7 @@
                         "platformFaultDomainCount": "[variables('clientAvailabilitySetSettings').faultDomainCount]",
                         "platformUpdateDomainCount": "[variables('clientAvailabilitySetSettings').updateDomainCount]"
                 }
-     },
+     }
   ],
   "outputs": {
      "masterFQDN": {
