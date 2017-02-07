@@ -2,27 +2,20 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-	"location": {
-		"type": "string",
-			"defaultValue": "[resourceGroup().location]",
-		"metadata": {
-			"description": "Location for the compute cluster"
-		}
-        },
  	"image": {
         	"type": "string",
-		"defaultValue": "OpenLogic:CentOS-HPC:7.1",
+		"defaultValue": "SUSE:SLES-HPC:12-SP1",
 		"allowedValues": [
-			"SUSE:SLES-HPC:12SP1",
-			"SUSE:SLES-HPC:12SP2",
+			"SUSE:SLES-HPC:12-SP1",
 			"OpenLogic:CentOS-HPC:7.1",
 			"OpenLogic:CentOS-HPC:6.5",
-			"OpenLogic:CentOS:6.6",
-			"OpenLogic:CentOS:7.0",
-			"Canonical:Ubuntu:7.0"
+			"OpenLogic:CentOS:7.2",
+			"OpenLogic:CentOS:7.3",
+			"Canonical:UbuntuServer:16.04-LTS"
+			"Canonical:UbuntuServer:16.10"
 	       	],
        		"metadata": {
-              		"description": "OpenLogic CentOS version to use. CentOS-HPC includes RDMA drivers for compute-to-compute MPI InfiniBand on A8, A9, H16r & H16mr VM sizes."
+              		"description": "OS version to deploy. The CentOS-HPC & SLES-HPC images include the RDMA drivers for compute-to-compute MPI InfiniBand on A8, A9, H16r & H16mr VM sizes. Non *-HPC images need the RDMA drivers to be installed manually, or deploy without infiniband."
          	}
      },
     "dnsPrefix": {
@@ -172,16 +165,10 @@
     }
   },
   "variables": {
-	"imageReference_SUSE:SLES-HPC:12SP1": {
+	"imageReference_SUSE:SLES-HPC:12-SP1": {
 		"publisher": "SUSE",
 		"offer": "SLES-HPC",
-		"sku": "12SP1",
-		"version": "latest"
- 	},
-	"imageReference_SUSE:SLES-HPC:12SP2": {
-		"publisher": "SUSE",
-		"offer": "SLES-HPC",
-		"sku": "12SP2",
+		"sku": "12-SP1",
 		"version": "latest"
  	},
 	"imageReference_OpenLogic:CentOS-HPC:7.1": {
@@ -196,16 +183,28 @@
 		"sku": "7.1",
 		"version": "latest"
  	},
-	"imageReference_OpenLogic:CentOS:7.0": {
+	"imageReference_OpenLogic:CentOS:7.2": {
 		"publisher": "OpenLogic",
-		"offer": "CentOS-HPC",
-		"sku": "7.1",
+		"offer": "CentOS",
+		"sku": "7.2",
 		"version": "latest"
  	},
-	"imageReference_OpenLogic:CentOS:6.6": {
+	"imageReference_OpenLogic:CentOS:7.3": {
 		"publisher": "OpenLogic",
-		"offer": "CentOS-HPC",
-		"sku": "7.1",
+		"offer": "CentOS",
+		"sku": "7.3",
+		"version": "latest"
+ 	},
+	"imageReference_Canonical:UbuntuServer:16.04-LTS": {
+		"publisher": "Canonical",
+		"offer": "UbuntuServer",
+		"sku": "16.04-LTS",
+		"version": "latest"
+ 	},
+	"imageReference_Canonical:UbuntuServer:16.10": {
+		"publisher": "Canonical",
+		"offer": "UbuntuServer",
+		"sku": "16.10",
 		"version": "latest"
  	},
 	"imageReference": "[variables(concat('imageReference_',parameters('image')))]",
