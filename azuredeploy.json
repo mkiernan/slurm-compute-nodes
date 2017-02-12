@@ -2,22 +2,22 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
- 	"image": {
-        	"type": "string",
-		"defaultValue": "SUSE:SLES-HPC:12-SP1",
-		"allowedValues": [
-			"SUSE:SLES-HPC:12-SP1",
-			"OpenLogic:CentOS-HPC:7.1",
-			"OpenLogic:CentOS-HPC:6.5",
-			"OpenLogic:CentOS:7.2",
-			"OpenLogic:CentOS:7.3",
-			"Canonical:UbuntuServer:16.04-LTS",
-			"Canonical:UbuntuServer:16.10"
-	       	],
-       		"metadata": {
-              		"description": "OS version to deploy. The CentOS-HPC & SLES-HPC images include the RDMA drivers for compute-to-compute MPI InfiniBand on A8, A9, H16r & H16mr VM sizes. Non *-HPC images need the RDMA drivers to be installed manually, or deploy without infiniband."
-         	}
-     },
+    "image": {
+      "type": "string",
+      "defaultValue": "SUSE:SLES-HPC:12-SP1",
+      "allowedValues": [
+        "SUSE:SLES-HPC:12-SP1",
+        "OpenLogic:CentOS-HPC:7.1",
+        "OpenLogic:CentOS-HPC:6.5",
+        "OpenLogic:CentOS:7.2",
+        "OpenLogic:CentOS:7.3",
+        "Canonical:UbuntuServer:16.04-LTS",
+        "Canonical:UbuntuServer:16.10"
+      ],
+      "metadata": {
+        "description": "OS version to deploy. The CentOS-HPC & SLES-HPC images include the RDMA drivers for compute-to-compute MPI InfiniBand on A8, A9, H16r & H16mr VM sizes. Non *-HPC images need the RDMA drivers to be installed manually, or deploy without infiniband."
+      }
+    },
     "dnsPrefix": {
       "type": "string",
       "metadata": {
@@ -34,14 +34,14 @@
     "adminPassword": {
       "type": "securestring",
       "metadata": {
-        "description": "Admin password. Pick a complex password with uppercase letters, lowercase letters, digits, and symbols. The password should not be longer than 16. Otherwise you'll get a BadRequest error."
+        "description": "Admin password across all nodes."
       }
     },
     "hpcUserName": {
       "type": "string",
       "defaultValue": "hpc",
       "metadata": {
-        "description": "User for running HPC applications with shared home directory and SSH public key authentication setup.  This user cannot login from outside the cluster. Pick a valid username otherwise there will be a BadRequest error."
+        "description": "User for running HPC applications with shared home directory and SSH public key authentication setup. This user cannot login from outside the cluster. Pick a valid username otherwise there will be a BadRequest error."
       }
     },
     "headNodeSize": {
@@ -55,18 +55,18 @@
         "Standard_A10",
         "Standard_A11",
         "Standard_D4",
-	"Standard_D13",
-	"Standard_D14",
+        "Standard_D13",
+        "Standard_D14",
         "Standard_DS4",
-	"Standard_DS13",
-	"Standard_DS14",
-	"Standard_G3",
-	"Standard_G4",
-	"Standard_G5",
-	"Standard_GS3",
-	"Standard_GS4",
-	"Standard_GS5",
-	"Standard_H16r"
+        "Standard_DS13",
+        "Standard_DS14",
+        "Standard_G3",
+        "Standard_G4",
+        "Standard_G5",
+        "Standard_GS3",
+        "Standard_GS4",
+        "Standard_GS5",
+        "Standard_H16r"
       ],
       "metadata": {
         "description": "Size of the head node."
@@ -87,56 +87,56 @@
         "Standard_A9",
         "Standard_A10",
         "Standard_A11",
-	"Standard_D1",
-	"Standard_D2",
-	"Standard_D3",
+        "Standard_D1",
+        "Standard_D2",
+        "Standard_D3",
         "Standard_D4",
-	"Standard_D11",
-	"Standard_D12",
-	"Standard_D13",
-	"Standard_D14",
-	"Standard_DS1",
-	"Standard_DS2",
-	"Standard_DS3",
-	"Standard_DS4",
-	"Standard_D11",
-	"Standard_D12",
-	"Standard_D13",
-	"Standard_D14",
-	"Standard_D1_v2",
-	"Standard_D2_v2",
-	"Standard_D3_v2",
-	"Standard_D4_v2",
-	"Standard_D5_v2",
-	"Standard_D11_v2",
-	"Standard_D12_v2",
-	"Standard_D13_v2",
-	"Standard_D14_v2",
-	"Standard_DS11",
-	"Standard_DS12",
-	"Standard_DS13",
-	"Standard_DS14",
-	"Standard_F1",
-	"Standard_F2",
-	"Standard_F4",
-	"Standard_F8",
-	"Standard_F16",
-	"Standard_G1",
-	"Standard_G2",
-	"Standard_G3",
-	"Standard_G4",
-	"Standard_G5",
-	"Standard_GS1",
-	"Standard_GS2",
-	"Standard_GS3",
-	"Standard_GS4",
-	"Standard_GS5",
-	"Standard_H8",
-	"Standard_H8m",
-	"Standard_H16",
-	"Standard_H16m",
-	"Standard_H16r",
-	"Standard_H16mr"
+        "Standard_D11",
+        "Standard_D12",
+        "Standard_D13",
+        "Standard_D14",
+        "Standard_DS1",
+        "Standard_DS2",
+        "Standard_DS3",
+        "Standard_DS4",
+        "Standard_D11",
+        "Standard_D12",
+        "Standard_D13",
+        "Standard_D14",
+        "Standard_D1_v2",
+        "Standard_D2_v2",
+        "Standard_D3_v2",
+        "Standard_D4_v2",
+        "Standard_D5_v2",
+        "Standard_D11_v2",
+        "Standard_D12_v2",
+        "Standard_D13_v2",
+        "Standard_D14_v2",
+        "Standard_DS11",
+        "Standard_DS12",
+        "Standard_DS13",
+        "Standard_DS14",
+        "Standard_F1",
+        "Standard_F2",
+        "Standard_F4",
+        "Standard_F8",
+        "Standard_F16",
+        "Standard_G1",
+        "Standard_G2",
+        "Standard_G3",
+        "Standard_G4",
+        "Standard_G5",
+        "Standard_GS1",
+        "Standard_GS2",
+        "Standard_GS3",
+        "Standard_GS4",
+        "Standard_GS5",
+        "Standard_H8",
+        "Standard_H8m",
+        "Standard_H16",
+        "Standard_H16m",
+        "Standard_H16r",
+        "Standard_H16mr"
       ],
       "metadata": {
         "description": "Size of the worker nodes."
@@ -149,6 +149,13 @@
         "description": "This template creates N worker node. Use workerNodeCount to specify that N."
       }
     },
+    "vmssName": {
+      "type": "string",
+      "metadata": {
+        "description": "String used as a base for naming resources. Must be 3-61 characters in length and globally unique across Azure. A hash is prepended to this string for some resources, and resource-specific information is appended."
+      },
+      "maxLength": 61
+    },
     "dataDiskSize": {
       "type": "int",
       "defaultValue": 128,
@@ -157,62 +164,62 @@
       }
     },
     "clientAvailabilitySetName": {
-        "type": "string",
-        "defaultValue": "avset-hpc-clients",
-        "metadata": {
-             "description": "Availability set name is REQUIRED when using MPI/Infiniband, so that nodes can communicate with each other via RDMA"
-         }
+      "type": "string",
+      "defaultValue": "avset-hpc-clients",
+      "metadata": {
+        "description": "Availability set name is REQUIRED when using MPI/Infiniband, so that nodes can communicate with each other via RDMA"
+      }
     }
   },
   "variables": {
-	"imageReference_SUSE:SLES-HPC:12-SP1": {
-		"publisher": "SUSE",
-		"offer": "SLES-HPC",
-		"sku": "12-SP1",
-		"version": "latest"
- 	},
-	"imageReference_OpenLogic:CentOS-HPC:7.1": {
-		"publisher": "OpenLogic",
-		"offer": "CentOS-HPC",
-		"sku": "7.1",
-		"version": "latest"
- 	},
-	"imageReference_OpenLogic:CentOS-HPC:6.5": {
-		"publisher": "OpenLogic",
-		"offer": "CentOS-HPC",
-		"sku": "7.1",
-		"version": "latest"
- 	},
-	"imageReference_OpenLogic:CentOS:7.2": {
-		"publisher": "OpenLogic",
-		"offer": "CentOS",
-		"sku": "7.2",
-		"version": "latest"
- 	},
-	"imageReference_OpenLogic:CentOS:7.3": {
-		"publisher": "OpenLogic",
-		"offer": "CentOS",
-		"sku": "7.3",
-		"version": "latest"
- 	},
-	"imageReference_Canonical:UbuntuServer:16.04-LTS": {
-		"publisher": "Canonical",
-		"offer": "UbuntuServer",
-		"sku": "16.04-LTS",
-		"version": "latest"
- 	},
-	"imageReference_Canonical:UbuntuServer:16.10": {
-		"publisher": "Canonical",
-		"offer": "UbuntuServer",
-		"sku": "16.10",
-		"version": "latest"
- 	},
-	"imageReference": "[variables(concat('imageReference_',parameters('image')))]",
-        "clientAvailabilitySetSettings": {
-        	"name": "[concat(parameters('clientAvailabilitySetName'))]",
-                        "faultDomainCount": "3",
-                        "updateDomainCount": "5"
-         },
+    "imageReference_SUSE:SLES-HPC:12-SP1": {
+      "publisher": "SUSE",
+      "offer": "SLES-HPC",
+      "sku": "12-SP1",
+      "version": "latest"
+    },
+    "imageReference_OpenLogic:CentOS-HPC:7.1": {
+      "publisher": "OpenLogic",
+      "offer": "CentOS-HPC",
+      "sku": "7.1",
+      "version": "latest"
+    },
+    "imageReference_OpenLogic:CentOS-HPC:6.5": {
+      "publisher": "OpenLogic",
+      "offer": "CentOS-HPC",
+      "sku": "7.1",
+      "version": "latest"
+    },
+    "imageReference_OpenLogic:CentOS:7.2": {
+      "publisher": "OpenLogic",
+      "offer": "CentOS",
+      "sku": "7.2",
+      "version": "latest"
+    },
+    "imageReference_OpenLogic:CentOS:7.3": {
+      "publisher": "OpenLogic",
+      "offer": "CentOS",
+      "sku": "7.3",
+      "version": "latest"
+    },
+    "imageReference_Canonical:UbuntuServer:16.04-LTS": {
+      "publisher": "Canonical",
+      "offer": "UbuntuServer",
+      "sku": "16.04-LTS",
+      "version": "latest"
+    },
+    "imageReference_Canonical:UbuntuServer:16.10": {
+      "publisher": "Canonical",
+      "offer": "UbuntuServer",
+      "sku": "16.10",
+      "version": "latest"
+    },
+    "imageReference": "[variables(concat('imageReference_',parameters('image')))]",
+    "clientAvailabilitySetSettings": {
+      "name": "[concat(parameters('clientAvailabilitySetName'))]",
+      "faultDomainCount": "3",
+      "updateDomainCount": "5"
+    },
     "armApiVersion": "2015-06-15",
     "newStorageAccountName": "[concat('st', uniqueString(resourceGroup().id))]",
     "vmStorageAccountContainerName": "vhd",
@@ -242,7 +249,7 @@
     },
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('networkSettings').virtualNetworkName)]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('networkSettings').subnet.dse.name)]",
-    "templateBaseUrl": "https://raw.githubusercontent.com/mkiernan/slurm-hpc/",
+    "templateBaseUrl": "https://raw.githubusercontent.com/mkiernan/slurm-compute-nodes/master",
     "installationCLI": "[concat('bash azuredeploy.sh ', variables('masterVMName'), ' ', variables('workerVMName'), ' ', parameters('workerNodeCount'), ' ', parameters('hpcUserName'), ' ', variables('templateBaseUrl'))]",
     "storageAccountType": "Standard_LRS"
   },
@@ -350,7 +357,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 0,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk0.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk0.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -360,7 +367,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 1,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk1.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk1.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -370,7 +377,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 2,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk2.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk2.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -380,7 +387,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 3,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk3.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk3.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -390,7 +397,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 4,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk4.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk4.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -400,7 +407,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 5,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk5.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk5.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -410,7 +417,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 6,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk6.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk6.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -420,7 +427,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 7,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk7.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk7.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -430,7 +437,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 8,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk8.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk8.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -440,7 +447,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 9,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk9.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk9.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -450,7 +457,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 10,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk10.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk10.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -460,7 +467,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 11,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk11.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk11.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -470,7 +477,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 12,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk12.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk12.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -480,7 +487,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 13,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk13.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk13.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -490,7 +497,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 14,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk14.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk14.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -500,7 +507,7 @@
               "diskSizeGB": "[parameters('dataDiskSize')]",
               "lun": 15,
               "vhd": {
-                "Uri":  "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk15.vhd')]"
+                "Uri": "[concat('http://',variables('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('masterVMName'),'-datadisk15.vhd')]"
               },
               "caching": "None",
               "createOption": "Empty"
@@ -543,7 +550,7 @@
       "name": "[concat(variables('workerVMName'), copyindex(), '/Installation')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-	    "[concat('Microsoft.Compute/virtualMachines/', variables('masterVMName'),'/extensions/Installation')]",
+        "[concat('Microsoft.Compute/virtualMachines/', variables('masterVMName'),'/extensions/Installation')]",
         "[concat('Microsoft.Compute/virtualMachines/', variables('workerVMName'), copyindex())]"
       ],
       "copy": {
@@ -633,20 +640,20 @@
       }
     },
     {
-      		"apiVersion": "[variables('armApiVersion')]",
-                "type": "Microsoft.Compute/availabilitySets",
-                "name": "[variables('clientAvailabilitySetSettings').name]",
-                "location": "[resourceGroup().location]",
-                "properties": {
-                        "platformFaultDomainCount": "[variables('clientAvailabilitySetSettings').faultDomainCount]",
-                        "platformUpdateDomainCount": "[variables('clientAvailabilitySetSettings').updateDomainCount]"
-                }
-     }
+      "apiVersion": "[variables('armApiVersion')]",
+      "type": "Microsoft.Compute/availabilitySets",
+      "name": "[variables('clientAvailabilitySetSettings').name]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "platformFaultDomainCount": "[variables('clientAvailabilitySetSettings').faultDomainCount]",
+        "platformUpdateDomainCount": "[variables('clientAvailabilitySetSettings').updateDomainCount]"
+      }
+    }
   ],
   "outputs": {
-     "masterFQDN": {
-        "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]",
-	"type": "string"
-      }
-   }
+    "masterFQDN": {
+      "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]",
+      "type": "string"
+    }
+  }
 }
