@@ -249,7 +249,7 @@
     },
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('networkSettings').virtualNetworkName)]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('networkSettings').subnet.dse.name)]",
-    "templateBaseUrl": "https://raw.githubusercontent.com/mkiernan/slurm-compute-nodes/master",
+    "templateBaseUrl": "https://raw.githubusercontent.com/mkiernan/slurm-compute-nodes/master/",
     "installationCLI": "[concat('bash azuredeploy.sh ', variables('masterVMName'), ' ', variables('workerVMName'), ' ', parameters('workerNodeCount'), ' ', parameters('hpcUserName'), ' ', variables('templateBaseUrl'))]",
     "storageAccountType": "Standard_LRS"
   },
