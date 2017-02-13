@@ -6,7 +6,7 @@ Forked from: https://github.com/Azure/azure-quickstart-templates/tree/master/slu
 
 Updated & extended this template to include: H16*r nodes & availability sets. 
 
-TODO: Needs to be changed to scale-sets & managed disks so we can use az cli 2.0 power-off functionality. 
+TODO: Needs to be updated to use scale-sets & managed disks so can utilize az cli 2.0 power-off functionality. 
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmkiernan%2Fslurm-compute-nodes%2Fmaster%2Fazuredeploy.json" target="_blank">
    <img alt="Deploy to Azure" src="http://azuredeploy.net/deploybutton.png"/>
