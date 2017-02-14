@@ -149,13 +149,6 @@
         "description": "This template creates N worker node. Use workerNodeCount to specify that N."
       }
     },
-    "vmssName": {
-      "type": "string",
-      "metadata": {
-        "description": "String used as a base for naming resources. Must be 3-61 characters in length and globally unique across Azure. A hash is prepended to this string for some resources, and resource-specific information is appended."
-      },
-      "maxLength": 61
-    },
     "dataDiskSize": {
       "type": "int",
       "defaultValue": 128,
@@ -163,7 +156,7 @@
         "description": "The size in GB of each data disk that is attached to the VM.  A RAID-0 volume is created with all data disks that is dataDiskSize * dataDiskCount in size."
       }
     },
-    "clientAvailabilitySetName": {
+    "availabilitySetName": {
       "type": "string",
       "defaultValue": "avset-hpc-clients",
       "metadata": {
@@ -216,7 +209,7 @@
     },
     "imageReference": "[variables(concat('imageReference_',parameters('image')))]",
     "clientAvailabilitySetSettings": {
-      "name": "[concat(parameters('clientAvailabilitySetName'))]",
+      "name": "[concat(parameters('availabilitySetName'))]",
       "faultDomainCount": "3",
       "updateDomainCount": "5"
     },
@@ -330,11 +323,15 @@
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[concat('Microsoft.Storage/storageAccounts/', variables('newStorageAccountName'))]",
+        "[concat('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
       ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('headNodeSize')]"
+        },
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName'))]"
         },
         "osProfile": {
           "computername": "[variables('masterVMName')]",
@@ -604,6 +601,7 @@
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[concat('Microsoft.Storage/storageAccounts/', variables('newStorageAccountName'))]",
+        "[concat('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]",
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), 'worker', copyindex())]"
       ],
       "copy": {
@@ -613,6 +611,9 @@
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('workerNodeSize')]"
+        },
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName'))]"
         },
         "osProfile": {
           "computername": "[concat(variables('workerVMName'), copyindex())]",

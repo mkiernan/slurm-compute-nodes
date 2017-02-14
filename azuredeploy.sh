@@ -66,8 +66,6 @@ add_sdk_repo()
 	
 	cp sles12sdk.repo "$repoFile"
 
-    # init new repo
-    zypper -n search nfs > /dev/null 2>&1
 }
 
 # Installs all required packages.
@@ -81,6 +79,9 @@ install_pkgs()
     fi
 
     zypper -n install $pkgs
+
+    #disable kernel updates to prevent rdma issues; unlock with zypper rl
+    zypper al 'kernel*'
 }
 
 # Partitions all data disks attached to the VM and creates
@@ -283,9 +284,20 @@ setup_env()
 	echo "export I_MPI_DAPL_PROVIDER=ofa-v2-ib0" >> /etc/profile.d/hpc.sh
 	echo "export I_MPI_DYNAMIC_CONNECTION=0" >> /etc/profile.d/hpc.sh
 }
+#
+# Setup RDMA 
+setup_rdma()
+{
+    # init new repo
+    zypper -n search nfs > /dev/null 2>&1
+
+    # rdma pkgs not pre-installed on SLES so add them now. 
+    sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+}
 
 add_sdk_repo
 install_pkgs
+setup_rdma
 setup_shares
 setup_hpc_user
 install_munge
