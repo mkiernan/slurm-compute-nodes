@@ -7,15 +7,9 @@
       "defaultValue": "SUSE:SLES-HPC:12-SP1",
       "allowedValues": [
         "SUSE:SLES-HPC:12-SP1",
-        "OpenLogic:CentOS-HPC:7.1",
-        "OpenLogic:CentOS-HPC:6.5",
-        "OpenLogic:CentOS:7.2",
-        "OpenLogic:CentOS:7.3",
-        "Canonical:UbuntuServer:16.04-LTS",
-        "Canonical:UbuntuServer:16.10"
       ],
       "metadata": {
-        "description": "OS version to deploy. The CentOS-HPC & SLES-HPC images include the RDMA drivers for compute-to-compute MPI InfiniBand on A8, A9, H16r & H16mr VM sizes. Non *-HPC images need the RDMA drivers to be installed manually, or deploy without infiniband."
+        "description": "OS version to deploy.SLES-HPC images include the RDMA drivers for compute-to-compute MPI InfiniBand on A8, A9, H16r & H16mr VM sizes. Non *-HPC images need the RDMA drivers to be installed manually, or deploy without infiniband."
       }
     },
     "dnsPrefix": {
@@ -169,42 +163,6 @@
       "publisher": "SUSE",
       "offer": "SLES-HPC",
       "sku": "12-SP1",
-      "version": "latest"
-    },
-    "imageReference_OpenLogic:CentOS-HPC:7.1": {
-      "publisher": "OpenLogic",
-      "offer": "CentOS-HPC",
-      "sku": "7.1",
-      "version": "latest"
-    },
-    "imageReference_OpenLogic:CentOS-HPC:6.5": {
-      "publisher": "OpenLogic",
-      "offer": "CentOS-HPC",
-      "sku": "7.1",
-      "version": "latest"
-    },
-    "imageReference_OpenLogic:CentOS:7.2": {
-      "publisher": "OpenLogic",
-      "offer": "CentOS",
-      "sku": "7.2",
-      "version": "latest"
-    },
-    "imageReference_OpenLogic:CentOS:7.3": {
-      "publisher": "OpenLogic",
-      "offer": "CentOS",
-      "sku": "7.3",
-      "version": "latest"
-    },
-    "imageReference_Canonical:UbuntuServer:16.04-LTS": {
-      "publisher": "Canonical",
-      "offer": "UbuntuServer",
-      "sku": "16.04-LTS",
-      "version": "latest"
-    },
-    "imageReference_Canonical:UbuntuServer:16.10": {
-      "publisher": "Canonical",
-      "offer": "UbuntuServer",
-      "sku": "16.10",
       "version": "latest"
     },
     "imageReference": "[variables(concat('imageReference_',parameters('image')))]",
